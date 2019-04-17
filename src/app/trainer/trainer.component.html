@@ -1,0 +1,163 @@
+<div class="card">
+    <h5 class="card-header bg-primary"> Trainer</h5>
+    <div class="card-body">
+        <div class="row mb-2">
+            <div class="col-lg-6">
+                <input type="text" class="form-control" [(ngModel)]="search" placeholder="Search Trainer">
+            </div>
+            <div class="col-lg-6">
+                <button class=" btn btn-info float-right" data-toggle="modal" (click)="openModal()">ADD TRAINER
+                    DETAILS</button>
+                <!-- (click)="onAddNewClass()" -->
+            </div>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="head text-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Trainer Name</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Subjects</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of trainerNames;let i=index;">
+                    <td>{{i+1}}</td>
+                    <td>{{data.trainername}}</td>
+                    <td>{{data.mobile}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.subjects}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-primary mr-1" data-toggle="modal"
+                            (click)="onEdit(data,i)">EDIT</button>
+
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                            (click)="onDelete(data.ID)">DELETE</button>
+                        <!-- 
+                        <button class="btn btn-sm bg-primary mr-1">Edit</button>
+                                        <button class="btn btn-sm bg-danger">Delete</button> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal Starting -->
+<div class="modal fade" id="myTrainerModal" tabindex="-1" role="dialog" aria-labelledby="myTrainerModal"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Modal header start -->
+            <div class="modal-header">
+                <h4 class="modal-title text-center"> TRAINER FORM </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal heder End -->
+            <!-- Modal Body Start -->
+            <div class="modal-body">
+                <form #myForm="ngForm" class="form-group">
+                    <!-- <form  #myForm="ngForm" class="form-group"> -->
+
+                    <p class="alert alert-danger" *ngIf="message.length>0">{{message}}</p>
+                    <label for="newtrainername" class="col-form-label ">
+                        <h5> Name:<span style="color: orangered ">*</span> </h5>
+                    </label>
+                    <input type="text" name="teachername" class="form-control" [(ngModel)]="trainer.trainername"
+                        placeholder="Enter Name"
+                        [ngClass]="((teachername.invalid&&(teachername.touched || teachername.darty))|| (submitted==true&&teachername.invalid))==true?'is-invalid':''"
+                        #teachername="ngModel" required>
+                    <div
+                        *ngIf="(teachername.invalid&&(teachername.dirty||teachername.touched))||(submited==true&&teachername.invalid)">
+                        <div class="text-danger" *ngIf="teachername.errors.required">
+                            Name is required
+                        </div>
+                        <div class="text-danger" *ngIf="teachername.errors.minlength">
+                            Name min length 8
+                        </div>
+                        <div class="text-danger" *ngIf="teachername.errors.maxlength">
+                            Name max length 10
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="newmobilenumber" class="col-form-label card-title">
+                            <h5>Mobile <span style="color: orangered ">*</span></h5>
+                        </label>
+                        <input type="number" name="mobileNumber" class="form-control" [(ngModel)]="trainer.mobile"
+                            placeholder="Enter mobile"
+                            [ngClass]="((mobile.invalid&&(mobile.dirty||mobile.touched))||(submited==true&&mobile.invalid))==true?'is-invalid':''"
+                            #mobile="ngModel" required minlength="10" maxlength="15" id="newmobilenumber">
+
+                        <div *ngIf="(mobile.invalid&&(mobile.dirty||mobile.touched))||(submited==true&&mobile.invalid)">
+                            <div class="text-danger" *ngIf="mobile.errors.required">
+                                Mobile Number is required
+                            </div>
+                            <div class="text-danger" *ngIf="mobile.errors.minlength">
+                                Mobile min length 10
+                            </div>
+                            <div class="text-danger" *ngIf="mobile.errors.maxlength">
+                                Mobile max length 15
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="newemail" class="col-form-label">
+                            <h5>Email<span style="color: orangered ">*</span></h5>
+                        </label>
+                        <input type="email" name="email" class="form-control" [(ngModel)]="trainer.email"
+                            placeholder="Enter Email"
+                            [ngClass]="((email.invalid&&(email.touched || email.darty))||(submited==true&&email.invalid))==true?'is-invalid':''"
+                            #email="ngModel" min-length="8" maxlength="15" id="newemail" required>
+                    </div>
+                    <div *ngIf="(email.invalid&&(email.dirty||email.touched))||(submited==true&&email.invalid)">
+                        <div class="text-danger" *ngIf="email.errors.required">
+                            Email is required
+                        </div>
+                        <div class="text-danger" *ngIf="email.errors.minlength">
+                            Email min length 8
+                        </div>
+                        <div class="text-danger" *ngIf="email.errors.maxlength">
+                            Email max length 15
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newsubject" class="col-form-label">
+                            <h5>Subjects <span style="color: orangered ">*</span></h5>
+                        </label>
+                        <!-- <input type="text" name="subjects" class="form-control" [(ngModel)] ="class.subjects" id="newsubject"> -->
+                        <select type="text" name="Subjects" multiple class="form-control" [(ngModel)]="trainer.subjects"
+                            id="newsubject" #newsubject="ngModel" required>
+                            <option *ngFor="let data of classList" [value]="data.classname">{{data.classname}}</option>
+
+                        </select>
+                        <div *ngIf="(newsubject.invalid&&(newsubject.dirty||newsubject.touched))||(submited==true&&newsubject.invalid)">
+                                <div class="text-danger" *ngIf="newsubject.errors.required">
+                                    Subject is required
+                                </div>
+                               
+                            </div>
+        
+                    </div>
+
+                    <!-- <select id="interfaceType" (ngModelChange)="onChange($event)" [(ngModel)]="interfacengmodel" -->
+
+                </form>
+                <!-- Modal Body End -->
+
+                <!-- Modal Footer Start -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="onAddTrainer(myForm)"> SUBMIT</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+                <!-- Modal Footer End -->
+            </div>
+        </div>
+    </div>

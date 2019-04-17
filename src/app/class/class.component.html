@@ -1,0 +1,89 @@
+<div class="card">
+    <h5 class="card-header bg-primary"> Class</h5>
+    <div class="card-body">
+        <div class="row mb-2">
+            <div class="col-lg-6">
+                <input type="text" class="form-control" [(ngModel)]="search" placeholder="Search class">
+            </div>
+            <div class="col-lg-6">
+                <button class=" btn btn-info float-right" data-toggle="modal" (click)="openModal()"
+                    data-target="#myClassModal">ADD NEW CLASS</button>
+                <!-- (click)="onAddNewClass()" -->
+            </div>
+        </div>
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="head text-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Class Names</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let data of classList;let i=index;">
+                    <td>{{i+1}}</td>
+                    <td>{{data.classname}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-primary mr-1" data-toggle="modal"
+                            (click)="onEdit(data,i)">EDIT</button>
+
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                            (click)="onDelete(data.ID)">DELETE</button>
+                        <!-- 
+                <button class="btn btn-sm bg-primary mr-1">Edit</button>
+                                <button class="btn btn-sm bg-danger">Delete</button> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<!-- Bootstrap modal has 3 part header, body, footer -->
+<div class="modal fade" id="myClassModal" tabindex="-1" role="dialog" aria-labelledby="myClassModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Modal header start -->
+            <div class="modal-header">
+                <h3 class="modal-title mce-text-center" id="myClassModal">ADD and EDIT CLASS NAME</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal heder End -->
+
+            <!-- Modal Body Start -->
+            <div class="modal-body">
+                <form  #myForm="ngForm" class="form-group">
+                        <p class="alert alert-danger" *ngIf="message.length>0">{{message}}</p>
+                    <label for="newclassname" class="col-form-label " > <h4>Class Name:
+                         <span style="color: orangered ">*</span></h4></label>
+                    <input type="text" name="classname" class="form-control" [(ngModel)]="class.classname" #classname="ngModel"
+                    [ngClass]="((classname.invalid&&(classname.touched || classname.darty))||(submited==true&&classname.invalid))==true?'is-invalid':''"
+                        placeholder="Enter Name" required >
+                        <div *ngIf="(classname.invalid&&(classname.dirty||classname.touched))||(submited==true&&classname.invalid)">
+                                <div class="text-danger" *ngIf="classname.errors.required">
+                                  Class Name is required
+                                </div>
+                        </div>
+
+                </form>
+           <!-- <form class="form-group">
+                    <label for="newclassname" class="col-form-label "> Class Name:</label>
+                    <input type="text" name="className" class="form-control" [(ngModel)]="class.classname"
+                        id="newclassname">
+                </form> -->
+            </div>
+            <!-- Modal Body End -->
+
+            <!-- Modal Footer Start -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" (click)="onAddClass(myForm)"> SUBMIT</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+            <!-- Modal Footer End -->
+        </div>
+    </div>
+</div>

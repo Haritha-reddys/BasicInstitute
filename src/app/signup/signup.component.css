@@ -1,0 +1,13 @@
+.card-signup {
+    max-width: 30rem;
+    margin-top: 8rem ;
+}
+
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    color: inherit;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    
+}

@@ -1,0 +1,49 @@
+
+<div class="card">
+    <h5 class="card-header bg-primary"> STUDENT</h5>
+    <div class="card-body">
+        <div class="row mb-2">
+            <div class="col-lg-6">
+                <input type="text" class="form-control" [(ngModel)]="search" placeholder="Search Student">
+            </div>
+            <div class="col-lg-6">
+                <button class=" btn btn-info float-right" routerLink='/addeditstudent' >ADD STUDENT
+                    DETAILS</button>
+                <!-- (click)="onAddNewClass()" -->
+            </div>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="head text-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Subjects</th>
+                    <th scope="col">trainername</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of trainerNames;let i=index;">
+                    <td>{{i+1}}</td>
+                    <td>{{data.studentname}}</td>
+                    <td>{{data.mobile}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.subjects}}</td>
+                    <td>{{data.trainername}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-primary mr-1" data-toggle="modal"
+                            (click)="onEdit(data,i)">EDIT</button>
+  
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                            (click)="onDelete(data.ID)">DELETE</button>
+                        <!-- 
+                        <button class="btn btn-sm bg-primary mr-1">Edit</button>
+                                        <button class="btn btn-sm bg-danger">Delete</button> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>

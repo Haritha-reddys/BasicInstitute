@@ -1,0 +1,88 @@
+<div class="card card-signup mx-auto mt-5">
+    <div class="card-header text-center bg-primary"> CREATE NEW ACCOUNT</div>
+    <div class="col-lg-12">
+        <form (ngSubmit)="onSignup(myForm)" #myForm="ngForm">
+          <p class="alert alert-danger" *ngIf="message.length>0">{{message}}</p>
+          <div class="form-group">
+           <h5> Name <span class="text-primary" style="color: orangered">*</span> </h5>
+            <input type="text" name="name" placeholder="Enter name"
+            [ngClass] ="((username.invalid&&(username.touched || username.darty))|| (submitted==true&&username.invalid))==true?'is-invalid':''"
+            #username="ngModel" required minlength="8" maxlength="10" class="form-control" [(ngModel)]="signup.name">
+          </div> 
+          <div *ngIf="(username.invalid&&(username.dirty||username.touched))||(submited==true&&username.invalid)">
+              <div class="text-danger" *ngIf="username.errors.required">
+                Name is required
+              </div>
+              <div class="text-danger" *ngIf="username.errors.minlength">
+                Name min length 8
+              </div>
+              <div class="text-danger" *ngIf="username.errors.maxlength">
+                Name max length 10
+              </div>
+            </div>
+             <div class="form-group">
+             <h5> Mobile<span class="text-primary"  style="color: orangered" >*</span></h5>
+              <input type="tel" name="mobile" placeholder="Enter mobile"
+              [ngClass]="((mobile.invalid&&(mobile.dirty||mobile.touched))||(submited==true&&mobile.invalid))==true?'is-invalid':''"
+                #mobile="ngModel" required minlength="10"  maxlength="15" class="form-control"
+                [(ngModel)]="signup.mobile">
+            </div>
+            <div *ngIf="(mobile.invalid&&(mobile.dirty||mobile.touched))||(submited==true&&mobile.invalid)">
+              <div class="text-danger" *ngIf="mobile.errors.required">
+                  Mobile Number is required
+              </div>
+              <div class="text-danger" *ngIf="mobile.errors.minlength">
+                Mobile min length 10
+              </div>
+              <div class="text-danger" *ngIf="mobile.errors.maxlength">
+                Mobile max length 15
+                </div>
+              
+            </div>
+            <div class="form-group">
+           <h5> Email<span class="text-primary"  style="color: orangered">*</span></h5>
+            <input type="email" name="email" placeholder="Enter Email"
+              [ngClass]="((email.invalid&&(username.touched || email.darty))||(submited==true&&email.invalid))==true?'is-invalid':''"
+              #email="ngModel" required min-length="8" maxlength="15" class="form-control" [(ngModel)]="signup.email">
+          </div>
+          <div *ngIf="(email.invalid&&(email.dirty||email.touched))||(submited==true&&email.invalid)">
+            <div class="text-danger" *ngIf="email.errors.required">
+              Email is required
+            </div>
+            <div class="text-danger" *ngIf="email.errors.minlength">
+              Email min length 8
+            </div>
+            <div class="text-danger" *ngIf="email.errors.maxlength">
+              Email max length 15
+            </div>
+          </div>
+  
+          <div class="form-group">
+           <h5> Password<span class="text-primary"  style="color: orangered">*</span></h5>
+            <input type="password" name="password" placeholder="Enter password"
+            [ngClass]="((password.invalid&&(password.dirty||password.touched))||(submited==true&&password.invalid))==true?'is-invalid':''"
+              #password="ngModel" required min-length="5" maxlength="10" class="form-control"
+              [(ngModel)]="signup.password">
+          </div>
+          <div *ngIf="(password.invalid&&(password.dirty||password.touched))||(submited==true&&password.invalid)">
+            <div class="text-danger" *ngIf="password.errors.required">
+              Password is required
+            </div>
+            <div class="text-danger" *ngIf="password.errors.minlength">
+              Password min length 5
+            </div>
+            <div class="text-danger" *ngIf="password.errors.maxlength">
+              Password max length 10
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">signup</button> 
+          
+
+          <div class="text-center">
+              <a class="d-block medium mt-3" routerLink='/signin'  style="padding:15px 25px;">Login</a>
+              
+       </div>
+       </form>
+        </div>
+  </div>

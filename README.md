@@ -4,6 +4,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Click to run (https://haritha-reddys.github.io/BasicInstitute/)
 
+# API are not hosted on https so you need to follow following things while login or sign up:
+
+1- Click the shield icon in the far right of the address bar.
+
+2- In the pop-up window, click "Load anyway" or "Load unsafe script".
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

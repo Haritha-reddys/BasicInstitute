@@ -13,6 +13,7 @@ import { ProvidersFeature } from '@angular/core/src/render3';
 })
 export class StudentComponent implements OnInit {
 student:StudentModel;
+search='';
 studentNames : StudentModel[]=[];
   constructor( private studentservice: StudentService , private router:Router) { }
 

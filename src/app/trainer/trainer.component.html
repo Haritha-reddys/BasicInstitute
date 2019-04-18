@@ -68,7 +68,7 @@
                     </label>
                     <input type="text" name="teachername" class="form-control" [(ngModel)]="trainer.trainername"
                         placeholder="Enter Name"
-                        [ngClass]="((teachername.invalid&&(teachername.touched || teachername.darty))|| (submitted==true&&teachername.invalid))==true?'is-invalid':''"
+                        [ngClass]="((teachername.invalid&&(teachername.touched || teachername.darty))|| (submited==true&&teachername.invalid))==true?'is-invalid':''"
                         #teachername="ngModel" required>
                     <div
                         *ngIf="(teachername.invalid&&(teachername.dirty||teachername.touched))||(submited==true&&teachername.invalid)">

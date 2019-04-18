@@ -11,6 +11,8 @@ import { FormGroup,FormControl, Validators } from '@angular/forms';
 })
 export class AddeditstudentComponent implements OnInit {
   message = '';
+  trainernames=[];
+  classes=[];  
   studentform= new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(12)]),
     email: new FormControl('',[Validators.minLength(10),Validators.maxLength(25),Validators.required]),

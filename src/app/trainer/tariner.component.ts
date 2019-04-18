@@ -18,6 +18,7 @@ export class TrainerComponent implements OnInit {
   @ViewChild("myForm") myForm: NgForm;
   trainer: TrainerModel;
   trainerNames: TrainerModel[] = [];
+  search='';
   submited: boolean = false;
   message: any = '';
   classList: ClassModel[] = [];

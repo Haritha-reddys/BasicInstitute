@@ -4,10 +4,10 @@
     <form [formGroup]="studentform" (ngSubmit)="onAddStudent()">
         <div class="form-group">
           <label><b>Student Name<span style="color: orangered">*</span></b></label>
-          <input type="text" class="form-control" formControlName="name" [ngClass]="((studentform.controls.name.invalid && studentform.controls.name.touched)||studentform.controls.name.darty==true 
+          <input type="text" class="form-control" formControlName="name" [ngClass]="((studentform.controls.name.invalid && studentform.controls.name.touched)||studentform.controls.name.dirty==true 
               ?'is-invalid':'')">
           <div
-            *ngIf="((studentform.controls.name.invalid && studentform.controls.name.touched)||studentform.controls.name.darty)">
+            *ngIf="((studentform.controls.name.invalid && studentform.controls.name.touched)||studentform.controls.name.dirty)">
             <div class="alert" *ngIf="studentform.controls.name.errors.required">
               Name field is Mandatory
             </div>
@@ -21,10 +21,10 @@
         </div>
         <div class="form-group">
           <label><b>Email:<span style="color: orangered">*</span></b></label>
-          <input type="email" class="form-control" formControlName="email" [ngClass]="((studentform.controls.email.invalid && studentform.controls.email.touched)||studentform.controls.email.darty==true 
+          <input type="email" class="form-control" formControlName="email" [ngClass]="((studentform.controls.email.invalid && studentform.controls.email.touched)||studentform.controls.email.dirty==true 
                 ?'is-invalid':'')">
           <div
-            *ngIf="((studentform.controls.email.invalid && studentform.controls.email.touched)||studentform.controls.email.darty)">
+            *ngIf="((studentform.controls.email.invalid && studentform.controls.email.touched)||studentform.controls.email.dirty)">
             <div class="alert" *ngIf="studentform.controls.email.errors.required">
               email field is Mandatory
             </div>
@@ -38,10 +38,10 @@
         </div>
         <div class="form-group">
           <label><b>Mobile:<span style="color: orangered">*</span></b></label>
-          <input type="text" class="form-control"  formControlName="mobile" [ngClass]="((studentform.controls.mobile.invalid && studentform.controls.mobile.touched)||studentform.controls.mobile.darty==true 
+          <input type="text" class="form-control"  formControlName="mobile" [ngClass]="((studentform.controls.mobile.invalid && studentform.controls.mobile.touched)||studentform.controls.mobile.dirty==true 
                   ?'is-invalid':'')">
           <div
-            *ngIf="((studentform.controls.mobile.invalid && studentform.controls.mobile.touched)||studentform.controls.mobile.darty)">
+            *ngIf="((studentform.controls.mobile.invalid && studentform.controls.mobile.touched)||studentform.controls.mobile.dirty)">
             <div class="alert" *ngIf="studentform.controls.mobile.errors.required">
               mobile field is Mandatory
             </div>

@@ -11,24 +11,24 @@
                 <!-- (click)="onAddNewClass()" -->
             </div>
         </div>
-        <table class="table table-striped table-hover table-bordered">
-            <thead class="head text-dark">
+        <table class="table table-striped table-hover table-bordered table-sm">
+            <thead class="head text-dark text-center ">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Class Names</th>
-                    <th scope="col">Action</th>
+                    <th style="width: 10%">#</th>
+                    <th style="width: 70%">Class Names</th>
+                    <th style="width: 20%">Action</th>
                 </tr>
             </thead>
             <tbody>
 
                 <tr *ngFor="let data of classList;let i=index;">
-                    <td>{{i+1}}</td>
-                    <td>{{data.classname}}</td>
-                    <td>
-                        <button type="button" class="btn btn-sm btn-primary mr-1" data-toggle="modal"
+                    <td class="text-center">{{i+1}}</td>
+                    <td class="text-center">{{data.classname}}</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-sm text-center  btn-primary mr-1 " data-toggle="modal"
                             (click)="onEdit(data,i)">EDIT</button>
 
-                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                        <button type="button" class="btn btn-sm text-center btn-danger" data-toggle="modal"
                             (click)="onDelete(data.ID)">DELETE</button>
                         <!-- 
                 <button class="btn btn-sm bg-primary mr-1">Edit</button>

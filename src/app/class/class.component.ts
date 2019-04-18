@@ -16,6 +16,7 @@ export class ClassComponent implements OnInit {
   @ViewChild("myForm") myForm: NgForm;
   class: ClassModel;
   classList: ClassModel[] = [];
+  search='';
   message = '';
   submited = false;
   constructor(private classservice: ClassService, private route: Router) { }

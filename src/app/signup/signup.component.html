@@ -6,7 +6,7 @@
           <div class="form-group">
            <h5> Name <span class="text-primary" style="color: orangered">*</span> </h5>
             <input type="text" name="name" placeholder="Enter name"
-            [ngClass] ="((username.invalid&&(username.touched || username.darty))|| (submitted==true&&username.invalid))==true?'is-invalid':''"
+            [ngClass] ="((username.invalid&&(username.touched || username.darty))|| (submited==true&&username.invalid))==true?'is-invalid':''"
             #username="ngModel" required minlength="8" maxlength="10" class="form-control" [(ngModel)]="signup.name">
           </div> 
           <div *ngIf="(username.invalid&&(username.dirty||username.touched))||(submited==true&&username.invalid)">
